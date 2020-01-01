@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+</head>
+
+<body>
+<div id="app">
+    <div>
+        <input type="text" v-model="name" my-alert="Yo.">
+        <span v-show="name">你的名子是:{{name}}</span>        
+    </div>
+    <div>
+        <input type="text" v-model="age" my-alert="Yo.">
+        <span v-show="age">你的年齡是:{{age}}</span>        
+    </div>
+    <div>
+        <input type="text" v-model="sex" my-alert="Yo.">
+        <span v-show="sex">你的性別是:{{sex}}</span><!-- v-show 沒有,隱藏--><!-- v-if 沒有,直接刪除 -->
+    </div>    
+</div>
+</div>
+<script src="../vue/lib/vue.js">//vue的CDN</script>
+<script src="../vue/js/main.js"></script>    
+</body>
+</html>
