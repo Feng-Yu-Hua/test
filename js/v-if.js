@@ -1,0 +1,22 @@
+var app=new Vue({
+    el:'#app',
+    data:{
+        //foodlist:['蔥','薑','蒜'],
+        foodlist:[
+            {
+                name:'蔥',
+                price:10,
+                discount:.6,
+            },
+            {
+                name:'薑',
+                price:'6',
+                discount:.8,
+            },
+            {
+                name:'蒜',
+                price:'12',
+            },
+        ]
+    }
+});
