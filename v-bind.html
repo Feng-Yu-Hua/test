@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/ecmascript" src="../vue/lib/jquery.min.js"></script>
+    <script type="text/ecmascript" src="../vue/lib/bootstrap.js"></script>
+    <title>Document</title>
+</head>
+<style>
+.active {
+    background-color: coral;
+}
+</style>
+<body>
+<div id="app">
+    <!-- v-bind 可用快捷方式 -->
+    <a v-bind:class="{active:isActive}" v-bind:href="url">點我
+        <!--<img v-bind:src="img" />-->
+    </a>
+</div>
+<script src="../vue/lib/vue.js"></script>
+<script src="../vue/js/v-bind.js"></script>
+</body>
+</html>
