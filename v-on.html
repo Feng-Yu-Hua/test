@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/ecmascript" src="../vue/lib/jquery.min.js"></script>
+    <script type="text/ecmascript" src="../vue/lib/bootstrap.js"></script>
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <!-- v-on 可用@代替 -->
+    <form @submit.prevent="onSubmit" @keyup.enter="onKeyupenter"><!-- submit.stop 停止冒泡事件 -->
+        <input type="text">                                              <!-- keyup 鍵盤事件 -->
+        <button type="submit">提交</button>                              <!-- keyup.enter 回車事件 判斷是哪個鍵 -->
+    </form>
+    <button v-on="{mouseenter:onEnter, mouseleave:onOut}" v-on:click="onClick()" v-bind:class="{klass}">點我</button>
+</div>
+<script src="../vue/lib/vue.js"></script>
+<script src="../vue/js/v-on.js"></script>
+</body>
+</html>
