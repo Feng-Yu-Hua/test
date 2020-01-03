@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/ecmascript" src="../vue/lib/jquery.min.js"></script>
+    <script type="text/ecmascript" src="../vue/lib/bootstrap.js"></script>
+    <title>v-if</title>
+</head>
+<body>
+<div id="app">
+    <div v-if="role == 'admin' || role == 'super_admin'">
+        管理員你好
+    </div>
+    <div v-else-if="role == 'hr'">
+        待查看簡歷列表:
+        <br>
+        ...
+    </div>
+    <div v-else>
+        你沒有此管理權限
+    </div>
+</div>                                     
+<script src="../vue/lib/vue.js"></script>
+<script src="../vue/js/v-if.js"></script>
+</body>
+</html>

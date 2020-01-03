@@ -11,7 +11,7 @@ var app=new Vue({
             {
                 name:'薑',
                 price:'6',
-                discount:.8,
+                discount:.5,
             },
             {
                 name:'蒜',
