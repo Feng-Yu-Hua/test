@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/ecmascript" src="../vue/lib/jquery.min.js"></script>
+    <script type="text/ecmascript" src="../vue/lib/bootstrap.js"></script>
+    <title>v-model</title>
+</head>
+<body>
+<div id="app">
+    <label>
+        男
+        <input v-model="sex" value="male" type="radio">
+    </label>
+    <label>
+        女
+        <input v-model="sex" value="female" type="radio">
+    </label>
+    {{sex}}
+    <br>
+    <input type="text" v-model.lazy="name">
+    <!-- lazy 惰性更新 --><!-- trim 前後空格去掉 --><!-- number 輸入位數字 -->
+    <pre>{{name}}</pre> 
+    <label>
+        台北
+        <input v-model="location" value="台北" type="checkbox">
+    </label>
+    <label>
+        台中
+        <input v-model="location" value="台中" type="checkbox">
+    </label>
+    <label>
+        高雄
+        <input v-model="location" value="高雄" type="checkbox">
+    </label>
+    {{location}}
+    <br>
+    <textarea v-model="article"></textarea>
+    <br>
+    {{article}}
+    <div>你來自哪裡</div>
+    <select v-model="option">
+        <option value="1">神岡</option>
+        <option value="2">豐原</option>
+        <option value="3">潭子</option>
+        <option value="4">大甲</option>
+    </select>
+    {{option}}
+    <div>你要去哪裡</div>
+    <select v-model="multiple" multiple>
+        <option value="1">神岡</option>
+        <option value="2">豐原</option>
+        <option value="3">潭子</option>
+        <option value="4">大甲</option>
+    </select>
+    {{multiple}}    
+</div>                                     
+<script src="../vue/lib/vue.js"></script>
+<script src="../vue/js/v-model.js"></script>
+</body>
+</html>
