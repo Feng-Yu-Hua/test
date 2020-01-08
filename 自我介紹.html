@@ -57,25 +57,62 @@
     </div>
 </div>
 <div class="container-fluid">
-    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-        <div class="card-header text-center">新增留言</div>
-        <div class="card-body text-center">
-            <div class="input-group my-3">
-                <div class="input-group-prepend">
-                    <button type="button" class="btn btn-outline-secondary">標題</button>
+    <div class="row">
+        <div class="col-4">
+            <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                <div class="card-header text-center">新增留言</div>
+                <div class="card-body text-center">
+                    <div class="input-group my-3">
+                        <div class="input-group-prepend">
+                            <button type="button" class="btn btn-outline-secondary">標題</button>
+                        </div>
+                        <input type="text" class="form-control" :placeholder='yourname' v-model='username' aria-describedby="addon-wrapping">
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <button type="button" class="btn btn-outline-secondary">內容</button>
+                        </div>
+                        <input type="text" class="form-control" :placeholder='yourname' v-model='username' aria-describedby="addon-wrapping">
+                    </div>
+                    <button type="button" class="btn btn-light mt-3">新增</button>
                 </div>
-                <input type="text" class="form-control" :placeholder='yourname' v-model='username' aria-describedby="addon-wrapping">
             </div>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <button type="button" class="btn btn-outline-secondary">內容</button>
-                </div>
-                <input type="text" class="form-control" :placeholder='yourname' v-model='username' aria-describedby="addon-wrapping">
-            </div>
-            <button type="button" class="btn btn-light mt-3">新增</button>
+        </div>
+        <div class="col-7">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                </tbody>
+            </table>        
         </div>
     </div>    
 </div>
+
 <div id="app2" class="container-fluid pt-3">
     <div class="jumbotron">
         <h3 class="text-center col-12">我會的有</h3>
