@@ -15,38 +15,33 @@
 </head>
 
 <body>
-<div class="row" id="app">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light col-12">
-        <a class="navbar-brand" href="#"><img src="../vue/lib/icon/icons-1.0.0-alpha/icons/star.svg" alt="" width="32" height="32"></a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">{{Home}}</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">{{Feature}}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">{{Works}}</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div class="col-6 mx-auto">
-        <p>
-            <div class="input-group flex-nowrap text-center">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="addon-wrapping">@</span>
+<div class="container-fluid">   
+    <div class="row" id="app">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light col-12">
+            <a class="navbar-brand" href="#"><img src="../vue/lib/icon/icons-1.0.0-alpha/icons/star.svg" alt="" width="32" height="32"></a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">{{Home}}</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{{Feature}}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{{Works}}</a>
+                    </li>
+                </ul>
+            </div>
+            <form class="form-inline">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="addon-wrapping">@</span>
+                    </div>
+                    <input type="text" class="form-control mr-sm-2" :placeholder='yourname' v-model='username' aria-describedby="addon-wrapping">
                 </div>
-                <input type="text" class="form-control" :placeholder='yourname' v-model='username' aria-describedby="addon-wrapping">
-            </div>
-        </p>    
-        <p>
-            <div class="text-center">
-                <button type="button" class="btn btn-outline-secondary">{{submit}}</button>
-            </div>
-            <p id="demo"></p>
-        </p>
+            </form>
+            <button type="button" class="btn btn-outline-secondary my-2 my-sm-0">{{submit}}</button>
+        </nav>
     </div>
 </div>
 <div id="app2" class="container-fluid">
@@ -75,7 +70,7 @@
                     </div>
                 </div>
             </div>
-            <h6 class="mr-1 text-center col-12">{{section|formatted}}</h6>
+            <h6 style="font-weight: bold;" class="text-center col-12">{{section|formatted}}</h6>
         </div>
     </div>                
 </div>
