@@ -178,9 +178,9 @@
         },
         computed:{
             results(){
-                let posts = this.posts1.slice().filter(post.category === this.section)
+                let posts1 = this.posts1.slice().filter(post.category === this.section)
                 let i,j,chunkedArray = [],chunk =4;
-                for(i=0,j=0;i<posts.length;i+=chunk,j++){
+                for(i=0,j=0;i<posts1.length;i+=chunk,j++){
                     chunkedArray[j] = posts1.slice(i,i+chunk);
                 }
                 return chunkedArray
