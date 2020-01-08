@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>記事本</title>
+
+</head>
+
+<body>
+    <!-- Vue實例的掛載點 -->
+    <div id="app">
+
+    </div>
+
+    <!-- Vue 的 CDN -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+    <!-- 引入 firesbase 的 CDN -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.6/firebase.js"></script>
+    
+    <!-- 引入 firestore 的 CDN -->
+    <script src="https://unpkg.com/vue-firestore"></script>
+
+    <!-- Vue實例的程式碼 -->
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBfr_e6GYGKN7ljHWU2qA7cIeD4h9p0jEc",
+            authDomain: "todos4firestore.firebaseapp.com",
+            databaseURL: "https://todos4firestore.firebaseio.com",
+            projectId: "todos4firestore",
+            storageBucket: "todos4firestore.appspot.com",
+            messagingSenderId: "911401310241"
+        };
+        let app = firebase.initializeApp(config);
+
+        let db = app.firestore()
+        const settings = {/* your settings... */ timestampsInSnapshots: true };
+        db.settings(settings);
+
+        new Vue({
+            el: '#app',
+            firestore() {
+                return {
+                    notes: db.collection('notes').orderBy('created')
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>

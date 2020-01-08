@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Vue實例的掛載點 -->
+    <div id='app'>
+        <ul>
+            <li v-for="(section,index) in sections">
+                {{ index }} - {{ section }}
+            </li>
+        </ul>
+    </div>
+    <!-- Vue 的 CDN -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+    <!-- Vue實例的程式碼 -->
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                sections: [
+                    "居家",
+                    "藝術",
+                    "汽車",
+                    "圖書",
+                    "商業",
+                    "流行",
+                    "食品",
+                    "健康",
+                    "雜誌",
+                    "電影",
+                    "政治",
+                    "科學",
+                    "運動",
+                    "科技"
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>

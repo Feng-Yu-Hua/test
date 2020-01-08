@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Vue實例的掛載點 -->
+    <div id='app'>
+        <form>
+            <input type='checkbox' v-model='isShow'>isShow
+            <br />
+            <select v-model='item'>
+                <option value=1>item 的值為 1</option>
+                <option value=2>item 的值為 2</option>
+                <option value=3>item 的值為 3</option>
+                <option value=4>item 的值為 4</option>
+            </select>
+        </form>
+
+        <div v-show='true'>
+            情況一：v-show='true'
+        </div>
+        <div v-show='false'>
+            情況二：v-show='false'
+        </div>
+        <div v-show='isShow'>
+            情況三：v-show='isShow'，isShow = {{ isShow }}
+        </div>
+        <div v-show='item==4'>
+            情況四：v-show='item==4'
+        </div>
+    </div>
+    <!-- Vue 的 CDN -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+    <!-- Vue實例的程式碼 -->
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                isShow: false,
+                item: 1
+            }
+        })
+    </script>
+</body>
+
+</html>

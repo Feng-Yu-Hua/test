@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vuex的練習</title>
+</head>
+<div id="app">
+    <!-- <h2>參考資料：https://vuex.vuejs.org/guide/</h2>
+    <p>{{ count }}</p>
+    <p>
+        <button @click="increment">+</button>
+        <button @click="decrement">-</button>
+    </p> -->
+</div>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vuex/3.0.1/vuex.js"></script>
+<script>
+    const store = new Vuex.Store({
+        state: {
+            count: 0
+        },
+        mutations: {
+            increment: state => state.count++,
+            decrement: state => state.count--
+        }
+    })
+
+    const Counter = {
+        template: `
+            <div>
+                <p>{{count}}</p>
+                <p>
+                    <button @click="increment">+</button>
+                    <button @click="decrement">-</button>
+                </p>
+            </div>
+        `,
+        computed: {
+            count() {  // 通過在根實例中註冊　store　選項，該　store　實例會注入到根元件下的所有子元件中，且子元件能通過　this.$store　訪問到。
+                return this.$store.state.count
+            }
+        },
+        methods: {
+            ...Vuex.mapMutations(['increment', 'decrement'])
+        }
+    }
+
+    new Vue({
+        el: '#app',
+        store,  // 通過在根實例中註冊　store　選項，該　store　實例會注入到根元件下的所有子元件中，且子元件能通過　this.$store　訪問到。
+        components: { Counter },
+        // computed:{Counter},
+        //     ...Vuex.mapState(['count'])
+        // },
+        // methods:{
+        //     ...Vuex.mapMutations(['increment', 'decrement'])
+        // },
+        template: `
+            <div>
+                <counter/>
+            </div>
+        `
+    })
+</script>
+
+</body>
+
+</html>

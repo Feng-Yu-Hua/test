@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap 的 CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+
+    <title>分頁-使用Vuex</title>
+    <style>
+        body {
+            font-family: Microsoft JhengHei;
+        }
+        .undone{
+            color:red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="containter">
+        <div class="card mx-auto mt-2" style="width: 32rem;">
+            <img class="card-img-top rounded mx-auto" src="./569.jpg" style='width:50%;' alt="Card image cap">
+            <div class="card-body">
+                <div>
+
+                    <!-- Vue 實例掛載點-->
+                    <div id="app">
+                        <h2 class='text-center'>待辦事項<small><span class="badge badge-success badge-pill" style='vertical-align:super;'>{{
+                                    todos.length}}</span></small></h2>
+                        <template id="app-template">
+                            <div>
+                                <form @submit.prevent="addTodo" class='border-bottom border-info'>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroup-sizing-sm">事項</span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="請輸入待辦事項" v-model="task"
+                                            aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                    </div>
+                                </form>
+
+                                <todo-list></todo-list>
+                                <vue-pagination></vue-pagination>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <template id='pageComponent'>
+        <div class="border-top border-info">
+            <div class="row mt-2">
+                <div class="col-2 form-group">
+                    <select class='form-control' v-on:change='changePageSize'>
+                        <option value='4'>4 筆/每頁</option>
+                        <option value='8'>8 筆/每頁</option>
+                        <option value='12'>12筆/每頁</option>
+                    </select>
+                </div>
+                <div class='col text-right'>
+                    <button v-bind:disabled="currentPage == 1" v-on:click="setCurrentPage(currentPage - 1)" class="btn btn-secondary mx-1 btn-sm">上頁</button>
+                    <span v-if="currentPage > 3">
+                        <!-- 顯示第一頁及後面的...-->
+                        <button v-on:click="setCurrentPage(1)" class="btn btn-secondary mx-1 btn-sm">1</button>
+                        <span class="h4">...</span>
+                    </span>
+                    <span class="mx-1">
+                        <button v-for="pageNumber in pageNumbers" v-bind:key="pageNumber" class="btn btn-secpmdary btn-sm"
+                            v-bind:class="{ 'btn-primary': pageNumber == currentPage }" v-on:click="setCurrentPage(pageNumber)">
+                            {{ pageNumber }}
+                        </button>
+                    </span>
+                    <span v-if="currentPage <= pageCount - 4">
+                        <!-- 顯示最後一頁及前面的...-->
+                        <span class="h4">...</span>
+                        <button v-on:click="setCurrentPage(pageCount)" class="btn btn-secondary mx-1 btn-sm">{{
+                            pageCount}}</button>
+                    </span>
+                    <button v-bind:disabled="currentPage == pageCount" v-on:click="setCurrentPage(currentPage + 1)"
+                        class="btn btn-secondary mx-1 btn-sm">下頁</button>
+                </div>
+            </div>
+        </div>
+
+    </template>
+    <!-- Bootstrap 的 CDN -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+
+    <!-- Vue 與 Vuex 的 CDN -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vuex/3.0.1/vuex.js"></script>
+
+    <!-- We need lodash.merge so get lodash first -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuex-persist"></script>
+
+    <!-- 程式碼 -->
+    <script src="./app4vuex0202valueadded.js"></script>
+</body>
+
+</html>

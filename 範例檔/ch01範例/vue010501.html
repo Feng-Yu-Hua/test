@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Vue實例的掛載點 -->
+    <div id='app'>
+
+    </div>
+    <!-- Vue與Vuex的CDN -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+    <!-- Vue實例的程式碼 -->
+    <script>
+        new Vue({
+            el: '#app',
+            beforeCreate: function () { 
+                console.log('before created ...')
+             },
+            created: function () { 
+                console.log('created...')
+             },
+            beforeMount: function () {
+                console.log('before mount...')
+            },
+            mounted: function () {
+                console.log('mounted....')
+             },
+            beforeUpdate: function () { 
+                console.log('before update...')
+             },
+            updated: function () {
+                console.log('updated....')
+             }
+        })
+    </script>
+</body>
+
+</html>

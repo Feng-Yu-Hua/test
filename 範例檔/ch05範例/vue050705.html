@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <style>
+            body {
+                font-family: Microsoft JhengHei;
+            }
+        </style>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Vue實例的掛載點 -->
+    <div id='app'>
+        <todo @additem='addItem'></todo>
+        <ul>
+            <li v-for='todo in todos' @click='removeItem(todo)'>{{ todo }} </li>
+        </ul>
+    </div>
+
+    <template id='todoUI'>
+        <div>
+            <label>待辦事項</label>
+            <input type='text' v-on:keyup.enter.esc='newItem'>
+        </div>
+    </template>
+
+    <!-- Vue 的 CDN -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+    <!-- Vue實例的程式碼 -->
+    <script>
+        Vue.component('todo', {
+            methods: {
+                newItem($event) {
+                    this.$emit("additem", $event.target.value)
+                    $event.target.value = ''
+                }
+            },
+            template: '#todoUI'
+        })
+        new Vue({
+            el: '#app',
+            data: {
+                todos: []
+            },
+            methods: {
+                addItem(value) {
+                    this.todos.push(value)
+                },
+                removeItem(item) {
+                    let ndx = this.todos.indexOf(item)  // 搜尋
+                    if (ndx != -1) {                    // 找到
+                        this.todos.splice(ndx, 1)       // 刪除
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

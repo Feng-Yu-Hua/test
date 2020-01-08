@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Bootstrap 4 CSS 的 CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <style>
+        .selected {
+            background-color: rgb(110, 253, 193);
+        }
+        li {
+            cursor: pointer
+        }
+        li:hover {
+            color: blue;
+            font-family: Microsoft JhengHei;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Vue實例的掛載點 -->
+    <div id='app' class='container-fluid'>
+        <div class="row">
+            <!-- <div class="col-2" style='position: relative;'> -->
+                <div class="card mt-2 ml-2" style="width: 16%;">
+                    <div class="card-header">
+                        關於醫院
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" @click='item=1' :class='{selected:item==1}'>醫院沿革</li>
+                        <li class="list-group-item" @click='item=2' :class='{selected:item==2}'>願景宗旨</li>
+                        <li class="list-group-item" @click='item=3' :class='{selected:item==3}'>院長的話</li>
+                    </ul>
+                </div>
+                <div class="mt-2 ml-2" style='width:80%'>
+                    <div class="alert alert-primary" role="alert" v-if='item==1'>
+                        醫院沿革
+                    </div>
+                    <div class="alert alert-secondary" role="alert" v-else-if='item==2'>
+                        願景宗旨
+                    </div>
+                    <div class="alert alert-success" role="alert" v-else='item==3'>
+                        院長的話
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Vue與Vuex的CDN -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+    <!-- Bootstrap 4 JavaScript 的 CDN -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+    <!-- Vue實例的程式碼 -->
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                item: 1
+            }
+        })
+    </script>
+</body>
+
+</html>

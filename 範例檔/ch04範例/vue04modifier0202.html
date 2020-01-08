@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Vue實例的掛載點 -->
+    <div id='app'>
+        <div @click='upperElement'>
+            <button @click='lowerElement($event)'>使用event完成事件修飾符號.stop</button>
+        </div>
+    </div>
+    <!-- Vue 的 CDN -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+    <!-- Vue實例的程式碼 -->
+    <script>
+        new Vue({
+            el: '#app',
+            methods: {
+                lowerElement(event) {
+                    event.stopPropagation()
+                    alert("下層元素事件被觸發")
+                },
+                upperElement() {
+                    alert("上層元素事件被觸發")
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

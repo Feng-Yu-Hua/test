@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        body {
+            font-family: Microsoft JhengHei;
+        }
+    </style>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Vue實例的掛載點 -->
+    <div id='app'>
+        <hello named="John"></hello>
+    </div>
+    <!-- Vue與Vuex的CDN -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+    <!-- Vue實例的程式碼 -->
+    <script>
+        Vue.component('hello', {
+            props: ['named'],
+            template: '<p>歡迎 {{ named }} 來到  Vue.js  前端設計實戰營！</p>'
+        })
+        new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+
+</html>

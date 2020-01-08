@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Vue實例的掛載點 -->
+    <div id='app'>
+        <a href='http://tw.yahoo.com' @click='defaultBehavior'>預設的行為是前往href指定的網址！</a>
+        <br/>
+        <a href='http://tw.yahoo.com' @click.prevent='perventDefault'>事件修飾符號.prevent</a>
+    </div>
+    <!-- Vue 的 CDN -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+    <!-- Vue實例的程式碼 -->
+    <script>
+        new Vue({
+            el: '#app',
+            methods: {
+                defaultBehavior(){
+                    alert("待會兒會連往href指定的網址喔....")
+                },
+                perventDefault() {
+                    alert("<a>標籤的href指定的網址不會前往喔....")
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

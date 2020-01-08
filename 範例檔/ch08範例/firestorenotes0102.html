@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>記事本</title>
+
+</head>
+
+<body>
+    <!-- Vue實例的掛載點 -->
+    <div id="app">
+
+    </div>
+
+    <!-- Vue 的 CDN -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    
+    <!-- 引入 firestore 的 CDN -->
+    <script src="https://unpkg.com/vue-firestore"></script>
+
+    <!-- Vue實例的程式碼 -->
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyB2b8rCTv-O7xzALdRnSpo8Gp1LYZ6LsAw",
+            authDomain: "notes1071201.firebaseapp.com",
+            databaseURL: "https://notes1071201.firebaseio.com",
+            projectId: "notes1071201",
+            storageBucket: "notes1071201.appspot.com",
+            messagingSenderId: "867741259017"
+        };
+        let app = firebase.initializeApp(config)
+
+        new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>記事本</title>
+
+  <!-- Bootstrap 4 CSS 的 CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+
+  <style>
+    body {
+      font-family: Microsoft JhengHei;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Vue實例的掛載點 -->
+  <div id="app">
+    <div class="container">
+      <div class="row row justify-content-center">
+        <div class="col text-center">
+          <h3>Firebase Google Authectication 認證</h3>
+          <button @click="signInWithGoogle" type="button" class="btn btn-primary">Sign in with Google</button>
+        </div>
+      </div>
+      <hr />
+      <div class="row justify-content-center">
+        <div class="text-center" v-if="issignedin">
+          <img :src='photoURL' class='img-fluid'>
+          <div id="name">{{ displayname }}</div>
+          <div id="email">{{ email }}</div>
+
+          <p class='text-center'>
+            <button @click='signOut' type="button" class="btn btn-success">登出</button>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Vue 的 CDN -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+  <!-- Bootstrap 4 JavaScript 的 CDN -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+
+  <!-- Vue實例的程式碼 -->
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase    
+    var config = {
+      apiKey: "AIzaSyB2b8rCTv-O7xzALdRnSpo8Gp1LYZ6LsAw",
+      authDomain: "notes1071201.firebaseapp.com",
+      databaseURL: "https://notes1071201.firebaseio.com",
+      projectId: "notes1071201",
+      storageBucket: "notes1071201.appspot.com",
+      messagingSenderId: "867741259017"
+    };
+    firebase.initializeApp(config);
+
+    new Vue({
+      el: '#app',
+      data: {
+        issignedin: false,
+        displayname: '',
+        photoURL: '',
+        email: ''
+      },
+      mounted() {
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            this.issignedin = true
+            this.displayname = user.displayName
+            this.email = user.email
+            this.photoURL = user.photoURL
+          }
+        })
+      },
+      methods: {
+        signInWithGoogle() {
+          const provider = new firebase.auth.GoogleAuthProvider()
+          firebase.auth().signInWithRedirect(provider).then((result) => {
+            
+          }).catch(err => console.log(err))
+        },
+        signOut() {
+          firebase.auth().signOut().then(() => {
+            this.displayName = ''
+            this.email = ''
+            this.photoURL = null
+            this.issignedin = false
+          }).catch(err => console.log(err))
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
