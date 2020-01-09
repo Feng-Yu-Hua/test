@@ -12,6 +12,10 @@ new Vue({
 new Vue({
     el:"#app3",
     data:{  //新增留言的物件
+        noteSelected:{
+            name:'',
+            content:''
+        },
         newNote:{
             name:'',
             content:''
@@ -26,7 +30,8 @@ new Vue({
         selectNote(note){
             this.noteSelected.name =  note.name
             this.noteSelected.content = note.content
-        },addNote(){
+        },
+        addNote(){
             if (this.newNote.name.trim().length == 0 || this.newNote.content.trim().length == 0) { //this指向物件
                 alert('記得標題和內容都要填喔')
                 return
@@ -36,17 +41,24 @@ new Vue({
                 content:this.newNote.content,
                 created:new Date()
             }
-            this.notes.push(note) //push()將數組末尾添加多個元素
-            this.newNote.content='' //清除多個元素
-            this.newNote.name=''
-        },deletNote(note){
-            if(confirm('確定刪除?')){
-                const ndx = this.notes.indexOf(note)
-                if(ndx !==-1){
-                    this.notes.splice(ndx,1)
+            this.notes.push(note) //push()將數組末尾添加多個元素 note物件儲存到notes陣列
+            this.newNote.name='' //add 後清除 name 和 content 裡面的值
+            this.newNote.content=''
+        },
+        deleteNote(note){
+            var found = false
+            for(var i=0;i<=this.notes.length;i++){
+                if(this.notes[i].name == note.name){
+                    found = true;
+                    break;
                 }
             }
-        },saveNotes(){
+            if(found){
+                this.notes.splice(i,1)
+            }
+            $('#exampleModal').modal('hide') //隱藏刪除視窗
+        },
+        saveNotes(){
             localStorage.setItem('notes',JSON.stringify(this.notes))
         }
     }
