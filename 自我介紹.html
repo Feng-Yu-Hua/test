@@ -56,7 +56,7 @@
         <p class="text-muted lead">來研究Vue.js吧</p>
     </div>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="app3">
     <div class="row">
         <div class="col-4">
             <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
@@ -88,7 +88,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr v-for="note of notes">
                         <td scope="row">{{note.name}}</td>
                         <td>{{nate.content}}</td>
                         <td><i class="fas fa-times-circle" v-on:click='deletNote(note)'></i></td>

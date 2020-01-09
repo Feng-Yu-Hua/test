@@ -9,4 +9,21 @@ new Vue({
         username:'',
     }
 });
+new Vue({
+    el:"app3",
+    data:{  //新增留言的物件
+        Newnote:{
+            name:'',
+            content:''
+        },
+        notes:[] //儲存留言物件的陣列
+    },methods:{
+        addNote(){
 
+        },deletNote(note){
+            if (confirm('確定刪除這則留言嗎?')){
+
+            }
+        }
+    }
+})
