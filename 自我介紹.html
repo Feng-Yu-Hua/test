@@ -90,13 +90,36 @@
                 <tbody>
                     <tr v-for="note of notes">
                         <td scope="row">{{note.name}}</td>
-                        <td>{{nate.content}}</td>
-                        <td><i class="fas fa-times-circle" v-on:click='deletNote(note)'></i></td>
+                        <td>{{note.content}}</td>
+                        <td>
+                            <i class="fas fa-times-circle" v-on:click='selectNote(note)' data-toggle="modal" data-target="#exampleModal"></i>
+                            <!-- 從這裡呼叫selectNote(note)函式 -->
+                        </td>
                     </tr>
                 </tbody>
             </table>        
         </div>
     </div>    
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">刪除{{noteSelected.name}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                是否要刪除這筆{{noteSelected.content}}呢?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">放棄</button>
+                <button type="button" class="btn btn-primary" v-on:click='deleteNote(noteSelected)'>刪除</button>
+            </div>
+        </div>
+    </div>
 </div>
 <div id="app2" class="container-fluid pt-3">
     <div class="jumbotron">
