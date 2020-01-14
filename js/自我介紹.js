@@ -63,3 +63,53 @@ new Vue({
         }
     }
 })
+new Vue({
+    el:"#app4",
+    data:{
+        textDecorations:[
+            {
+                name:'underline',
+                title:'底線'
+            },
+            {
+                name:'line-through',
+                title:'中線'
+            },
+            {
+                name:'overline',
+                title:'頂線'
+            }
+        ],
+        colorStyle:{
+            color:'black',
+        },
+        textDecorationSelected:'',
+        //-----------------------------------------------------------------------------------------------
+        colorSelected:'',
+        colors:[
+            {
+                id:'1',
+                title:'紅色',
+                name:'red'
+            },
+            {
+                id:'2',
+                title:'綠色',
+                name:'green'
+            },{
+                id:'3',
+                title:'藍色',
+                name:'blue'
+            }
+        ],
+        
+    },
+    methods:{
+        selectColor(color){
+            this.colorSelected = color.name
+        },
+        selecttextDecoration(textDecoration){
+            this.textDecorationSelected = textDecoration.name
+        }
+    }
+})
