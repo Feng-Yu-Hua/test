@@ -167,7 +167,7 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="#" @click='setColor("alert-primary")'>alert-primary</a>
-                        <a class="dropdown-item" href="#" @click='setColor("alert-secondary")'>alert-secondary</a>
+                        <a class="dropdown-item" href="#" @click='setColor("alert-info")'>alert-info</a>
                         <a class="dropdown-item" href="#" @click='setColor("alert-success")'>alert-success</a>
                         <a class="dropdown-item" href="#" @click='setColor("alert-danger")'>alert-danger</a>
                         <a class="dropdown-item" href="#" @click='setColor("alert-warning")'>alert-warning</a>
@@ -186,7 +186,7 @@
                         {{post.title}}
                     </div>
                     <div class="card-body"  name="pig">
-                        <p class="card-text" v-bind:style='{textDecoration:textDecorationSelected , color:colorSelected , }' v-bind:style='fontStyle'>{{post.abstract}}</p>
+                        <p class="card-text" v-bind:style="[{textDecoration:textDecorationSelected , color:colorSelected },fontStyle]">{{post.abstract}}</p>
                     </div>
                 </div>
             </div>
@@ -253,7 +253,7 @@
             'font-size':'16px',
             },
             //------------------------------------------------------------------
-            color1:'alert-info',
+            color1:'alert-secondary',
             //------------------------------------------------------------------
             textDecorations:[
                 {
@@ -282,15 +282,20 @@
             colors:[
                 {
                     id:'1',
+                    title:'灰色',
+                    name:'#333'
+                },               
+                {
+                    id:'2',
                     title:'紅色',
                     name:'red'
                 },
                 {
-                    id:'2',
+                    id:'3',
                     title:'綠色',
                     name:'green'
                 },{
-                    id:'3',
+                    id:'4',
                     title:'藍色',
                     name:'blue'
                 }
@@ -330,8 +335,8 @@
                     case 'alert-primary':
                         this.color1 = 'alert-primary'
                         break;
-                    case 'alert-secondary':
-                        this.color1 = 'alert-secondary'
+                    case 'alert-info':
+                        this.color1 = 'alert-info'
                         break;
                     case 'alert-success':
                         this.color1 = 'alert-success'
