@@ -10,29 +10,78 @@
     <script src="../vue/lib/bootstrap.min.js"></script>
     <script src="../vue/lib/axios.min.js"></script>
     <script src="../vue/lib/icon.js"></script>
-    <title>自我介紹</title>
+    <title>自我介紹2</title>
     <script src="../vue/lib/vue.js"></script> 
 </head>
+<style>
+li{
+    cursor: pointer;
+}
+li:hover{
+    font-weight:600;
+}
+</style>
 <body>
 <div class="container-fluid" id="app">
     <div class="row">
-        <div class="col-12 mt-3">
-            <ul class="list-group col-3">
-                <li class="list-group-item" @click='item=1'>Dapibus ac facilisis in</li>
-                <li class="list-group-item" @click='item=2'>Morbi leo risus</li>
-                <li class="list-group-item" @click='item=3'>Porta ac consectetur ac</li>
-                <li class="list-group-item" @click='item=4'>Vestibulum at eros</li>
+        <div class="col-3 mt-3">
+            <ul class="list-group">
+                <li class="list-group-item" @click='item=1'>家庭介紹</li>
+                <li class="list-group-item" @click='item=2'>高中經歷</li>
+                <li class="list-group-item" @click='item=3'>大學經歷</li>
+                <li class="list-group-item" @click='item=4'>職訓經歷</li>
             </ul>
+        </div>
+        <div class="col-9 mt-3">
             <div v-show='item==1'>
-                v-show='item==1'
+                <div class="card-header">
+                    家庭介紹
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">家庭介紹</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                </div>
+                <div class="card-footer text-muted">
+                    2 days ago
+                </div>
             </div>
             <div v-show='item==2'>
-                v-show='item==2'
-            </div>            
+                <div class="card-header">
+                    高中經歷
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">高中經歷</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                </div>
+                <div class="card-footer text-muted">
+                    2 days ago
+                </div>
+            </div>
             <div v-show='item==3'>
-                v-show='item==3'
-            </div>           
-        </div>
+                <div class="card-header">
+                    大學經歷
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">大學經歷</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                </div>
+                <div class="card-footer text-muted">
+                    2 days ago
+                </div>
+            </div>
+            <div v-show='item==4'>
+                <div class="card-header">
+                    職訓經歷
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">職訓經歷</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                </div>
+                <div class="card-footer text-muted">
+                    2 days ago
+                </div>
+            </div>
+        </div>          
     </div>
 </div>   
 <script src="../vue/js/自我介紹2.js"></script>    
