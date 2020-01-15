@@ -17,6 +17,19 @@
 .white {
     color: #ffffff;
 }
+.a1 {
+    display: inline-block;
+    background-color: white;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    border: rgb(134, 145, 155) solid 1.6px;
+    border-radius: 5px;
+}
+.a1 a:hover,a:active,a:link,a:visited {
+    color: #000;
+    text-decoration: none;    
+}
 </style>
 <body>
 <div class="container-fluid">   
@@ -119,7 +132,7 @@
     </div>
 </div>
 <div id="app2" class="container-fluid pt-3">
-    <div class="jumbotron">
+    <div class="alert" v-bind:class='color1'>
         <h3 class="text-center col-12">我會的有</h3>
         <hr class="my-3">
         <div class="row">
@@ -128,8 +141,42 @@
                     <option selected v-for="section in sections">{{section}}</option>
                 </select>
             </div>
-            <div class="col-3 my-3 mr-sm-2">    
+            <div class="my-3 col-1">    
                 <button type="button" class="btn btn-secondary" @click="getPostsByCategory(section)">選擇</button>
+            </div>
+            <div class="btn-group my-3 mx-3" role="group" aria-label="Button group with nested dropdown">
+                <div class="btn-group" role="group" role="group">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
+                        字體顏色
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#" v-for='color of colors' @click='selectColor(color)'>{{ color.title }}</a>
+                    </div>
+                </div>
+                <div class="btn-group" role="group" role="group">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
+                        線條位置
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#" v-for='textDecoration of textDecorations' @click='selecttextDecoration(textDecoration)'>{{ textDecoration.title }}</a>
+                    </div>
+                </div>
+                <div class="btn-group" role="group" role="group">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
+                        背景顏色
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#" @click='setColor("alert-primary")'>alert-primary</a>
+                        <a class="dropdown-item" href="#" @click='setColor("alert-secondary")'>alert-secondary</a>
+                        <a class="dropdown-item" href="#" @click='setColor("alert-success")'>alert-success</a>
+                        <a class="dropdown-item" href="#" @click='setColor("alert-danger")'>alert-danger</a>
+                        <a class="dropdown-item" href="#" @click='setColor("alert-warning")'>alert-warning</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-1 my-3 mx-4 text-right">    
+                <a href="#pig" class="a1" @click="decreasefontsize">A-</a>
+                <a href="#pig" class="a1" @click="increasefontsize">A+</a>
             </div>
         </div>
         <div class="row" v-for="posts in results">
@@ -138,43 +185,21 @@
                     <div class="card-header">
                         {{post.title}}
                     </div>
-                    <div class="card-body">
-                        <p class="card-text">{{post.abstract}}</p>
+                    <div class="card-body"  name="pig">
+                        <p class="card-text" v-bind:style='{textDecoration:textDecorationSelected , color:colorSelected , }' v-bind:style='fontStyle'>{{post.abstract}}</p>
                     </div>
                 </div>
             </div>
-            <h6 style="font-weight: bold;" class="text-center col-12">{{section|formatted}}</h6>
-        </div>
-    </div>                
-</div>
-<div class="container-fluid text-center" id="app4">
-    <div class="row">
-        <div class="dropdown mt-3 col-6">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
-                請選擇
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#" v-for='color of colors' @click='selectColor(color)'>{{ color.title }}</a>
-            </div>
-        </div>
-        <div class="col-6">
-            <p v-bind:style='{color:colorSelected}' class="mt-3">顏色</p>            
-            {{ colorSelected }}     
-        </div>         
-        <div class="dropdown mt-3 col-6">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
-                請選擇
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#" v-for='textDecoration of textDecorations' @click='selecttextDecoration(textDecoration)'>{{ textDecoration.title }}</a>
-            </div>
-        </div>
-        <div class="col-6">
-            <p v-bind:style='{textDecoration:textDecorationSelected}' class="mt-3">線的位置 </p>
-            {{ textDecorationSelected }}
+            <h6 style="font-weight: bold;" class="text-center col-12 mt-3">{{section|formatted}}</h6>
         </div>
     </div>
+                    
 </div>
+
+
+
+
+
 
 <script>
     const posts = [
@@ -221,7 +246,55 @@
             posts,
             results: [],
             sections:SECTIONS_TW.split(','),
-            section:'科技'
+            section:'科技',
+            //------------------------------------------------------------------
+            fontsizesetting:16,
+            fontStyle:{
+            'font-size':'16px',
+            },
+            //------------------------------------------------------------------
+            color1:'alert-info',
+            //------------------------------------------------------------------
+            textDecorations:[
+                {
+                    name:'none',
+                    title:'無'
+                },
+                {
+                    name:'underline',
+                    title:'底線'
+                },
+                {
+                    name:'line-through',
+                    title:'中線'
+                },
+                {
+                    name:'overline',
+                    title:'頂線'
+                }
+            ],
+            colorStyle:{
+                color:'black',
+            },
+            textDecorationSelected:'',
+            //------------------------------------------------------------------
+            colorSelected:'',
+            colors:[
+                {
+                    id:'1',
+                    title:'紅色',
+                    name:'red'
+                },
+                {
+                    id:'2',
+                    title:'綠色',
+                    name:'green'
+                },{
+                    id:'3',
+                    title:'藍色',
+                    name:'blue'
+                }
+            ],
         },
         filters:{
             formatted(value){
@@ -239,6 +312,37 @@
                     chunkedArray[j] = posts.slice(i, i + chunk);
                 }
                 this.results = chunkedArray;
+            },
+            decreasefontsize(){
+                this.fontStyle['font-size']=`${this.fontsizesetting--}px`
+            },
+            increasefontsize(){
+                this.fontStyle['font-size']=`${this.fontsizesetting++}px`
+            },
+            selectColor(color){
+            this.colorSelected = color.name
+            },
+            selecttextDecoration(textDecoration){
+                this.textDecorationSelected = textDecoration.name
+            },
+            setColor(alertColor){
+                switch (alertColor) {
+                    case 'alert-primary':
+                        this.color1 = 'alert-primary'
+                        break;
+                    case 'alert-secondary':
+                        this.color1 = 'alert-secondary'
+                        break;
+                    case 'alert-success':
+                        this.color1 = 'alert-success'
+                        break;
+                    case 'alert-danger':
+                        this.color1 = 'alert-danger'
+                        break;
+                    case 'alert-warning':
+                        this.color1 = 'alert-warning'
+                        break;
+                }
             }
         }
     });    

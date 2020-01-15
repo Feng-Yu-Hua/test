@@ -66,7 +66,13 @@ new Vue({
 new Vue({
     el:"#app4",
     data:{
+        color1:'alert-info',
+        //------------------------------------------------------------------------------------
         textDecorations:[
+            {
+                name:'none',
+                title:'無'
+            },
             {
                 name:'underline',
                 title:'底線'
@@ -84,25 +90,29 @@ new Vue({
             color:'black',
         },
         textDecorationSelected:'',
-        //-----------------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         colorSelected:'',
         colors:[
             {
                 id:'1',
+                title:'無',
+                name:'none'
+            },
+            {
+                id:'2',
                 title:'紅色',
                 name:'red'
             },
             {
-                id:'2',
+                id:'3',
                 title:'綠色',
                 name:'green'
             },{
-                id:'3',
+                id:'4',
                 title:'藍色',
                 name:'blue'
             }
         ],
-        
     },
     methods:{
         selectColor(color){
@@ -110,6 +120,25 @@ new Vue({
         },
         selecttextDecoration(textDecoration){
             this.textDecorationSelected = textDecoration.name
+        },
+        setColor(alertColor){
+            switch (alertColor) {
+                case 'alert-primary':
+                    this.color1 = 'alert-primary'
+                    break;
+                case 'alert-secondary':
+                    this.color1 = 'alert-secondary'
+                    break;
+                case 'alert-success':
+                    this.color1 = 'alert-success'
+                    break;
+                case 'alert-danger':
+                    this.color1 = 'alert-danger'
+                    break;
+                case 'alert-warning':
+                    this.color1 = 'alert-warning'
+                    break;
+            }
         }
     }
 })
