@@ -7,6 +7,8 @@ new Vue({
         yourname:'你的名字',
         submit:'輸入',
         username:'',
+        //-------------
+        item:1
     }
 });
 new Vue({

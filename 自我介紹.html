@@ -39,13 +39,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link active" href="#">{{Home}}</span></a>
+                        <a class="nav-link active" href="#" @click='item=1'>{{Home}}</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{Feature}}</a>
+                        <a class="nav-link" href="#" @click='item=2'>{{Feature}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{Works}}</a>
+                        <a class="nav-link" href="#" @click='item=3'>{{Works}}</a>
                     </li>
                 </ul>
             </div>
@@ -58,6 +58,9 @@
                 </div>
             </form>
         </nav>
+        <div v-show='item==3'>
+            v-show='item==3'
+        </div>
     </div>
 </div>
 <div class="jumbotron jumbotron-fluid">
@@ -193,13 +196,7 @@
             <h6 style="font-weight: bold;" class="text-center col-12 mt-3">{{section|formatted}}</h6>
         </div>
     </div>
-                    
 </div>
-
-
-
-
-
 
 <script>
     const posts = [
@@ -352,7 +349,6 @@
         }
     });    
 </script>    
-
 <script src="../vue/js/自我介紹.js"></script> 
 </body>
 </html>
