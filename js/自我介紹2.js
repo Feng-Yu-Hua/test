@@ -4,3 +4,6 @@ new Vue({
         item:1
     }
 });
+new Vue({
+    el:"#app2",
+})
