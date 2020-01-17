@@ -1,5 +1,37 @@
+const Home ={
+    template:
+    `
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">你好 馮禹華</h1>
+            <p class="text-muted lead">來研究Vue.js吧</p>
+        </div>
+    </div>
+    `
+}
+const Feature ={
+    template:'<h1>自我介紹</h1>'
+}
+const Works ={
+    template:'<h1>作品</h1>'
+}
+const routes=[
+    {
+        path:'/home',component:Home
+    },
+    {
+        path:'/feature',component:Feature
+    },
+    {
+        path:'/works',component:Works
+    }
+]
+const router = new VueRouter({
+    routes
+})
 new Vue({
     el:"#app",
+    router,
     data:{
         Home:'首頁',
         Feature:'自我介紹',

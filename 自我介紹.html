@@ -10,8 +10,9 @@
     <script src="../vue/lib/bootstrap.min.js"></script>
     <script src="../vue/lib/axios.min.js"></script>
     <script src="../vue/lib/icon.js"></script>
+    <script src="../vue/lib/vue.js"></script>
+    <script src="../vue/lib/vue-router.js"></script>
     <title>自我介紹</title>
-    <script src="../vue/lib/vue.js"></script> 
 </head>
 <style>
 .white {
@@ -39,13 +40,25 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link active" href="#">{{Home}}</span></a>
+                        <a href="#">
+                            <router-link to='/home' class="nav-link active">
+                                {{Home}}
+                            </router-link>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{Feature}}</a>
+                        <a href="#">
+                            <router-link to='/feature' class="nav-link">
+                                {{Feature}}
+                            </router-link>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{Works}}</a>
+                        <a href="#">
+                            <router-link to='/works' class="nav-link">
+                                {{Works}}
+                            </router-link>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -58,7 +71,7 @@
                 </div>
             </form>
         </nav>
-
+        <router-view></router-view>
     </div>
 </div>
 <div class="jumbotron jumbotron-fluid">
