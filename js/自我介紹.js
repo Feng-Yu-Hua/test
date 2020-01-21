@@ -1,3 +1,7 @@
+Vue.component('hello',{
+    props:['named'],
+    template:'#helloUI'
+})
 new Vue({
     el:"#app",
     data:{
@@ -6,7 +10,8 @@ new Vue({
         Works:'作品',
         yourname:'你的名字',
         submit:'輸入',
-        username:'',
+        name:'',
+        showHello:false,
     }
 });
 new Vue({
